@@ -29,7 +29,7 @@
       "default": 3,
       "maximum": 24,
       "minimum": 0,
-      "description": "The amount of months, including this one, for which to download the data. Functionality is as follows: <ul><li>0 - downloads data for current month</li><li>1 - downloads data for current and previous month</li><li>2 - downloads data for this, previous and month prior to that.</li>",
+      "description": "The amount of months, including this one, for which to download the data. Functionality is as follows: <ul><li>0 - downloads data for current month</li><li>1 - downloads data for current and previous month</li><li>2 - downloads data for this, previous and month prior to that.</li><li>4 - etc.</li>",
       "propertyOrder": 300
     }
   }

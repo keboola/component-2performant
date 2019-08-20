@@ -29,6 +29,11 @@ class Component(KBCEnvHandler):
             logging.error("Parameter \"monthsBack\" must be an integer!")
             sys.exit(1)
 
+        elif int(self.paramMonths) < 0:
+
+            logging.error("Parameter \"monthsBack\" must be a non-negative integer!")
+            sys.exit(1)
+
         self.client = client2Performant(
             username=self.paramUsername, password=self.paramPassword)
         self.writer = resultWriter(self.data_path)
@@ -56,7 +61,7 @@ class Component(KBCEnvHandler):
 
         for month in self.varMonthRange:
 
-            logging.info("Downloading data for %s." % month)
+            logging.info("Downloading data for %s..." % month)
 
             pagedResults = self.client.getPagedCommissions(month)
             flattenedResults = [self.writer.flattenJSON(r) for r in pagedResults]

@@ -27,10 +27,10 @@
     "monthsBack": {
       "type": "integer",
       "title": "Month delta",
-      "default": 3,
+      "default": 4,
       "maximum": 48,
       "minimum": 1,
-      "description": "The amount of months, including this one, for which to download the data. Functionality is as follows: <ul><li>1 - downloads data for current month</li><li>2 - downloads data for current and previous month</li><li>3 - downloads data for this, previous and month prior to that.</li><li>4 - etc.</li>",
+      "description": "The amount of months, including this one, for which to download the data. Functionality is as follows: <ul><li>1 - downloads data for current month,</li><li>2 - downloads data for current and previous month,</li><li>3 - downloads data for this, previous and month prior to that,</li><li>4 - etc.</li>",
       "propertyOrder": 300
     },
     "incremental": {

@@ -2,7 +2,8 @@
   "parameters": {
     "username": "john@doe.com",
     "#password": "abcedfg123445",
-    "monthsBack": 6
+    "monthsBack": 6,
+    "incremental": true
   },
   "image_parameters": {}
 }

@@ -9,6 +9,7 @@ from kbc.env_handler import KBCEnvHandler
 USERNAME_KEY = 'username'
 PASSWORD_KEY = '#password'
 MONTHS_KEY = 'monthsBack'
+INCREMENTAL_KEY = 'incremental'
 
 MANDATORY_PARAMS = [USERNAME_KEY, PASSWORD_KEY, MONTHS_KEY]
 
@@ -23,21 +24,27 @@ class Component(KBCEnvHandler):
         self.paramUsername = self.cfg_params[USERNAME_KEY]
         self.paramPassword = self.cfg_params[PASSWORD_KEY]
         self.paramMonths = self.cfg_params[MONTHS_KEY]
+        self.paramIncremental = self.cfg_params[INCREMENTAL_KEY]
 
         if isinstance(self.paramMonths, int) is False:
 
             logging.error("Parameter \"monthsBack\" must be an integer!")
             sys.exit(1)
 
-        elif int(self.paramMonths) < 0:
+        elif int(self.paramMonths) <= 0:
 
-            logging.error("Parameter \"monthsBack\" must be a non-negative integer!")
+            logging.error("Parameter \"monthsBack\" must be a positive integer!")
+            sys.exit(1)
+
+        if isinstance(self.paramIncremental, bool) is False:
+
+            logging.error("Parameter \"incremental\" must be a boolean!")
             sys.exit(1)
 
         self.client = client2Performant(
             username=self.paramUsername, password=self.paramPassword)
-        self.writer = resultWriter(self.data_path)
-        self.varMonthRange = self._generateDateRange(self.paramMonths)
+        self.writer = resultWriter(self.data_path, incrementalLoad=self.paramIncremental)
+        self.varMonthRange = self._generateDateRange(self.paramMonths - 1)
 
     @staticmethod
     def monthdelta(date, delta):

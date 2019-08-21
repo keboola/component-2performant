@@ -15,3 +15,12 @@ A configuration of 3 mandatory parameters is required. A sample configuration of
 ## Output
 
 A table with commissions returned by the API. Table is loaded incrementally with column `id` used as primary key.
+
+## Development
+
+For developing the component, build and run the component with:
+
+```
+docker-compose build dev
+docker-compose run --rm dev
+```

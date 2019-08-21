@@ -4,7 +4,8 @@
   "required": [
     "#password",
     "username",
-    "monthsBack"
+    "monthsBack",
+    "incremental"
   ],
   "properties": {
     "#password": {
@@ -27,10 +28,17 @@
       "type": "integer",
       "title": "Month delta",
       "default": 3,
-      "maximum": 24,
-      "minimum": 0,
-      "description": "The amount of months, including this one, for which to download the data. Functionality is as follows: <ul><li>0 - downloads data for current month</li><li>1 - downloads data for current and previous month</li><li>2 - downloads data for this, previous and month prior to that.</li><li>4 - etc.</li>",
+      "maximum": 48,
+      "minimum": 1,
+      "description": "The amount of months, including this one, for which to download the data. Functionality is as follows: <ul><li>1 - downloads data for current month</li><li>2 - downloads data for current and previous month</li><li>3 - downloads data for this, previous and month prior to that.</li><li>4 - etc.</li>",
       "propertyOrder": 300
+    },
+    "incremental": {
+      "type": "boolean",
+      "title": "Incremental load",
+      "default": true,
+      "description": "Use incremental load.",
+      "propertyOrder": 400
     }
   }
 }

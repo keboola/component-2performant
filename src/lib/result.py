@@ -21,9 +21,10 @@ PK_COMMISSIONS = ['id']
 
 class resultWriter:
 
-    def __init__(self, dataPath):
+    def __init__(self, dataPath, incrementalLoad):
 
         self.paramDataPath = dataPath
+        self.paramIncremental = incrementalLoad
         self.run()
 
     def createTableDefinition(self, tableName, tableColumns, tablePK):
@@ -86,4 +87,4 @@ class resultWriter:
         self.writerCommissions = self.createWriter(_commissionTableDef)
         self.createManifest(destination=_commissionTableDef.full_path + '.manifest',
                             pk=_commissionTableDef.table_def.pk,
-                            incremental=True)
+                            incremental=self.paramIncremental)

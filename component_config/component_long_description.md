@@ -10,8 +10,8 @@ A configuration of 3 mandatory parameters is required. A sample configuration of
 
 - username (`username`) - a username used to login to 2performant;
 - password (`#password`) - a password associated with username;
-- month delta (`monthsBack`) - a positive integer marking the amount of months for which to download commissions.
-- incremental load (`incremental`) - a boolean marking, whether incremental load should be used
+- month delta (`monthsBack`) - a positive integer marking the amount of months for which to download commissions;
+- incremental load (`incremental`) - a boolean marking, whether incremental load should be used.
 
 ## Output
 

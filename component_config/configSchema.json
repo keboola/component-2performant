@@ -37,7 +37,7 @@
       "type": "boolean",
       "title": "Incremental load",
       "default": true,
-      "description": "Use incremental load.",
+      "description": "Use incremental load to storage.",
       "propertyOrder": 400
     }
   }

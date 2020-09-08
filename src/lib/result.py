@@ -58,7 +58,6 @@ class resultWriter:
         _manifest = {'primary_key': pk, 'incremental': incremental}
 
         with open(destination, 'w') as _manFile:
-
             json.dump(_manifest, _manFile)
 
     @staticmethod
@@ -82,8 +81,7 @@ class resultWriter:
 
     def run(self):
 
-        _commissionTableDef = self.createTableDefinition(
-            'commissions', FIELDS_COMMISSIONS, PK_COMMISSIONS)
+        _commissionTableDef = self.createTableDefinition('commissions', FIELDS_COMMISSIONS, PK_COMMISSIONS)
         self.writerCommissions = self.createWriter(_commissionTableDef)
         self.createManifest(destination=_commissionTableDef.full_path + '.manifest',
                             pk=_commissionTableDef.table_def.pk,

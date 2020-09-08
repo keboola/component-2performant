@@ -41,15 +41,13 @@ class Component(KBCEnvHandler):
             logging.error("Parameter \"incremental\" must be a boolean!")
             sys.exit(1)
 
-        self.client = client2Performant(
-            username=self.paramUsername, password=self.paramPassword)
+        self.client = client2Performant(username=self.paramUsername, password=self.paramPassword)
         self.writer = resultWriter(self.data_path, incrementalLoad=self.paramIncremental)
         self.varMonthRange = self._generateDateRange(self.paramMonths - 1)
 
     @staticmethod
     def monthdelta(date, delta):
-        m, y = (date.month+delta) % 12, date.year + \
-            ((date.month)+delta-1) // 12
+        m, y = (date.month+delta) % 12, date.year + ((date.month)+delta-1) // 12
 
         if not m:
             m = 12

@@ -47,8 +47,7 @@ class client2Performant(HttpClientBase):
         else:
 
             logging.error("Could not login and obtain an access token.")
-            logging.error("Response received: %s - %s." %
-                          (_reqLogin.status_code, _reqLogin.reason))
+            logging.error(f"Response received: %{_reqLogin.status_code} - {_reqLogin.reason}.")
 
             sys.exit(1)
 
@@ -65,20 +64,15 @@ class client2Performant(HttpClientBase):
             "filter[date]": dateFilter
         }
 
-        _urlCommissions = os.path.join(
-            self.base_url, 'advertiser/programs/default/commissions')
-        _reqCommissions = self.get_raw(
-            _urlCommissions, headers=_headers, params=_params)
+        _urlCommissions = os.path.join(self.base_url, 'advertiser/programs/default/commissions')
+        _reqCommissions = self.get_raw(_urlCommissions, headers=_headers, params=_params)
 
         if _reqCommissions.status_code == 200:
-
             return _reqCommissions.json()['commissions']
 
         else:
-
-            logging.error("Unhandled exception. Received %s - %s." %
-                          (_reqCommissions.status_code, _reqCommissions.json()))
-            sys.exit(100)
+            logging.error(f"Unhandled exception. Received {_reqCommissions.status_code} - {_reqCommissions.json()}.")
+            sys.exit(1)
 
     def getPagedCommissions(self, dateFilter):
 
@@ -92,11 +86,9 @@ class client2Performant(HttpClientBase):
             _respCommissions = self._getCommissions(reqPage, dateFilter)
 
             if len(_respCommissions) == 0:
-
                 reachedEnd = True
 
             else:
-
                 allCommissions += _respCommissions
 
         return allCommissions
